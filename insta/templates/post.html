@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row">
+    <div class="col-6">
+      <h1 class="text-center">Nova Foto</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+    <div class="col-6">
+      <small class="card mb-3">
+        <img src="{{form.photo.url}}" id="preview" class="card-img-top" alt="{{object}}">
+      </small>  
+    </div>
+  </div>
+
+  <script>
+  const file = document.querySelector('#id_photo');
+  file.addEventListener('change', function(e) {
+    var reader = new FileReader();
+    const preview = document.querySelector('#preview');
+    reader.onload = e => {
+      preview.setAttribute('src', e.target.result)
+    }
+    reader.readAsDataURL(this.files[0])
+  })
+  </script>
+{% endblock %}

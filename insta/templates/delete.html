@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row photo-list">
+    <div class="col-6 offset-md-3">
+    <form method="post">
+      {% csrf_token %}
+      <p>Tem certeza que deseja deletar "{{ object }}"?</p>
+      <div class="button-set">
+        <a class="btn btn-link" value="Confirm" href="/">Cancelar</a>
+        <input type="submit" class="btn btn-danger" value="Excluir">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

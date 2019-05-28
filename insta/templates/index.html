@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row photo-list">
+    <div class="col-6 offset-md-3">
+      {% for post in object_list %}
+      <div class="col-12">
+        <div class="card mb-3">
+          <img src="{{post.photo.url}}" class="card-img-top" alt="{{post.legend}}">
+          <div class="card-body">
+            <p class="card-text">{{post.legend}}</p>
+            <p class="card-text icons">
+              <a href="/edit/{{post.pk}}" class="icon-set">
+                <small class="text-muted">
+                  <i class="fas fa-edit"></i>
+                </small>
+              </a>
+              <a href="/delete/{{post.pk}}" class="icon-set">
+                <small class="text-muted">
+                  <i class="fas fa-trash-alt"></i>
+                </small>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
